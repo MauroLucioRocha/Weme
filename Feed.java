@@ -425,6 +425,11 @@ public class Feed extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build(); //???????????
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
     //busca as imagens do feed que estao armazenadas no banco de dados
     private void carregaFeed() {
         List<ImageFeed> imagensFeed = dbWeme.BuscarFeed();
