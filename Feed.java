@@ -73,7 +73,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class Feed extends AppCompatActivity {
 
-    //variaveis do facebook
+    //variaveis do facebook MAURO
     private CallbackManager callbackManager;
     private com.facebook.Profile profile = null;
     private Uri fotoPerfilFacebook;
