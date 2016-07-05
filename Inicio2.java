@@ -35,7 +35,7 @@ public class Inicio2 extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(Inicio2.this, Eventos.class);
+                Intent i = new Intent(Inicio2.this, Festas.class);
                 startActivity(i);
                 finish();
             }

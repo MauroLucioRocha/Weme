@@ -20,6 +20,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -606,8 +607,12 @@ public class Feed extends AppCompatActivity {
     //cria o caminho na memoria e chama a camera
     private void chamaCamera() {
 
-        file = new File("storage/emulated/0/Android/data/br.com.elede.weme/Pictures", "weme_" + getDateTime() + ".jpeg");
-//        file = new File("storage/external_SD/Android/data/br.com.elede.weme/files/Pictures", "weme_" + getDateTime() + ".jpeg");
+//        File picsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+
+//        file = new File(picsDir, "weme_" + getDateTime() + ".jpeg");
+
+//        file = new File("storage/emulated/0/Android/data/br.com.elede.weme/Pictures", "weme_" + getDateTime() + ".jpeg");
+        file = new File("storage/external_SD/Android/data/br.com.elede.weme/files/Pictures", "weme_" + getDateTime() + ".jpeg");
         caminhoImagemMemoria = Uri.fromFile(file);
 
         //chama a intent da camera
