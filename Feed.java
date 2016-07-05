@@ -661,7 +661,6 @@ public class Feed extends AppCompatActivity {
         //recebe o bitmap da foto tirada
         int width = layoutFeed.getWidth();
         int height = width;
-        //height *= 1.25f;
 
         /*
          * metodo que deve ser redimencionado manual.

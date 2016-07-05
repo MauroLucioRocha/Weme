@@ -39,7 +39,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class Festas extends AppCompatActivity implements ConsultaSituacaoEventos.ConsultaSituacaoEventosListener  {
+public class Eventos extends AppCompatActivity implements ConsultaSituacaoEventos.ConsultaSituacaoEventosListener  {
 
     private String[] listaImagensEvento;
     private LinearLayout linearLayout;
@@ -52,7 +52,7 @@ public class Festas extends AppCompatActivity implements ConsultaSituacaoEventos
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_festas);
+        setContentView(R.layout.activity_eventos);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarHome);
 //        setSupportActionBar(toolbar);
@@ -75,7 +75,7 @@ public class Festas extends AppCompatActivity implements ConsultaSituacaoEventos
                 @Override
                 public void run() {
                     linearLayout.removeAllViews();
-                    TextView textView = new TextView(Festas.this);
+                    TextView textView = new TextView(Eventos.this);
                     textView.setText("Sem conexão com a Internet\n:(");
                     textView.setTypeface(null, Typeface.BOLD_ITALIC);
                     textView.setTextSize(18);
@@ -93,17 +93,17 @@ public class Festas extends AppCompatActivity implements ConsultaSituacaoEventos
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(verificaConexao(Festas.this)){
+                if(verificaConexao(Eventos.this)){
                     linearLayout.removeAllViews();
                     linearLayout.setClickable(false);
-                    new ConsultaSituacaoEventos(Festas.this).execute();
+                    new ConsultaSituacaoEventos(Eventos.this).execute();
 
                 } else {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             linearLayout.removeAllViews();
-                            TextView textView = new TextView(Festas.this);
+                            TextView textView = new TextView(Eventos.this);
                             textView.setText("Sem conexão com a Internet\n:(");
                             textView.setTypeface(null, Typeface.BOLD_ITALIC);
                             textView.setTextSize(18);
@@ -233,7 +233,7 @@ public class Festas extends AppCompatActivity implements ConsultaSituacaoEventos
             layoutEvento.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(Festas.this, Feed.class);
+                    Intent i = new Intent(Eventos.this, Feed.class);
                     i.putExtra("NomeEvento", txtEvento.getText().toString());
                     i.putExtra("idEvento", finalIdEvento);
                     startActivity(i);
@@ -266,7 +266,7 @@ public class Festas extends AppCompatActivity implements ConsultaSituacaoEventos
             for(int i = 0; i < listaImagensEvento.length; i++){
                 try{
                     //download imagem
-                    temp = Picasso.with(Festas.this).load(listaImagensEvento[i]).resize(150, 150).get();
+                    temp = Picasso.with(Eventos.this).load(listaImagensEvento[i]).resize(150, 150).get();
 
                     //cantos arredondados
                     bitmap = getRoundCornerBitmap(temp, 20);
