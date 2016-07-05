@@ -63,7 +63,6 @@ public class DataBaseConnection {
         dbWeme.update("feed", valores, "_id = ?", new String[]{"" + imageFeed.getId()});
     }
 
-
     public void deletar (Usuario usuario){
         dbWeme.delete("usuario", "_id = ?" + usuario.getId(), null);
     }

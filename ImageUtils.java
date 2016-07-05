@@ -10,7 +10,7 @@ import android.net.Uri;
 import android.util.Log;
 
 /**
- * @author Ricardo Lecheta
+ * @author Mauro
  * 
  */
 public class ImageUtils {
