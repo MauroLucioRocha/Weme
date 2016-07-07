@@ -64,6 +64,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import com.facebook.FacebookSdk;
 import com.squareup.picasso.Picasso;
@@ -71,9 +72,9 @@ import com.squareup.picasso.Picasso;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 
-public class Feed extends AppCompatActivity {
+public class Feed extends AppCompatActivity implements ConsultaSituacaoFeed.ConsultaSituacaoFeedListener {
 
-    //variaveis do facebook MAURO
+    //variaveis do facebook
     private CallbackManager callbackManager;
     private com.facebook.Profile profile = null;
     private Uri fotoPerfilFacebook;
@@ -103,6 +104,7 @@ public class Feed extends AppCompatActivity {
     private File file;
     private Uri caminhoImagemMemoria;
     private Display display;
+    private String idEvento;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -182,6 +184,9 @@ public class Feed extends AppCompatActivity {
          */
 
         setSupportActionBar(toolbar);
+
+        new ConsultaSituacaoFeed(this, bundle.getString("idEvento")).execute();
+        idEvento = bundle.getString("idEvento");
 
         //listener para o Dialg de confirmacao de postagem da foto tirada
         listener = new DialogInterface.OnClickListener() {
@@ -330,7 +335,7 @@ public class Feed extends AppCompatActivity {
         List<Usuario> usuarioList = dbWeme.Buscar();
 
         //carrega imagens do feed
-        carregaFeed();
+//        carregaFeed();
 
 //        LoginManager.getInstance().registerCallback(callbackManager, (FacebookCallback<LoginResult>) getApplicationContext());
 
@@ -753,6 +758,18 @@ public class Feed extends AppCompatActivity {
         bitmap.recycle();
 
         return output;
+    }
+
+    @Override
+    public void onConsultaConcluida(String situacao) {
+        //separa cada evento com suas informacoes
+//        String[] listaEventos = situacao.split (Pattern.quote ("?"));
+//        ArrayList<String> eventos = new ArrayList<String>();
+//        for(int x = 0; x < listaEventos.length; x++){
+//            eventos.add(listaEventos[x]);
+//        }
+
+        System.out.println("ID: " + idEvento + " FEED: " + situacao);
     }
 
     //classe para fazer download das imagens do facebook
